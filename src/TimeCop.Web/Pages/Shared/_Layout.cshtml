@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html dir="rtl">
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <environment exclude="development">
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94070768-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() { dataLayer.push(arguments); }
+            gtag('js', new Date());
+            gtag('config', 'UA-94070768-1');
+        </script>
+    </environment>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title> TimeCop | @ViewData["Title"]</title>
+ 
+
+    <link href="~/lib/twitter-bootstrap/css/bootstrap.css" rel="stylesheet" asp-append-version="true" />
+
+    <link href="~/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+    @RenderSection("styles", required: false)
+</head>
+<body dir="rtl" class="container-fluid">
+
+    @RenderBody()
+    <script src="~/lib/twitter-bootstrap/js/bootstrap.bundle.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

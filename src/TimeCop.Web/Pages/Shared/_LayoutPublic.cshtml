@@ -1,0 +1,27 @@
+﻿@{
+    Layout = "~/pages/Shared/_Layout.cshtml";
+}
+
+@section styles{
+    <link href="~/css/public.css" rel="stylesheet" asp-append-version="true" />
+    @RenderSection("styles", required: false)
+}
+
+<partial name="~/pages/shared/_Navbar.cshtml"/>
+<div class="container-fluid" style="margin-top:90px">
+        
+  <div class="row">
+
+            <div class="col-12">
+
+                @RenderBody()
+            </div>
+
+        </div>
+    <hr />
+    <partial name="_Footer" />
+</div>
+
+@section scripts{
+    @RenderSection("scripts", required: false)
+}

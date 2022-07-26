@@ -1,0 +1,20 @@
+﻿@{
+    Layout = "/pages/shared/_Layout.cshtml";
+}
+
+@section styles{
+
+    @RenderSection("styles", required: false)
+}
+
+    <partial name="_Navbar" />
+
+    <div class="container mt-lg-5 pt-5" dir="rtl">
+        @RenderBody()
+        <hr />
+        <partial name="_Footer" />
+    </div>
+
+    @section scripts{
+    @RenderSection("scripts", required: false)
+}
