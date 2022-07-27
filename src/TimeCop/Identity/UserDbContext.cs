@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using TimeCop.Identity.Models;
 
-namespace Codehaks.Identity.Data;
+namespace TimeCop.Identity.Data;
 
 public class UserDbContext : IdentityDbContext<ApplicationUser>
 {

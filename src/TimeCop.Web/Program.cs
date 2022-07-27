@@ -1,6 +1,6 @@
-using Codehaks.Identity.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using TimeCop.Identity.Data;
 using TimeCop.Identity.Models;
 using TimeCop.TimeSheet;
 
