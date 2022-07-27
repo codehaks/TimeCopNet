@@ -1,12 +1,14 @@
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using TimeCop.Identity.Data;
 using TimeCop.Identity.Models;
 using TimeCop.TimeSheet;
 
 var builder = WebApplication.CreateBuilder(args);
-
+builder.Services.AddTransient<IEmailSender, TimeCop.Identity.EmailSender>();
 builder.Services.AddDbContext<UserDbContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("Identity")));
+
 
 builder.Services.AddDbContext<TimeSheetDbContext>
     (options => options.UseNpgsql(builder.Configuration.GetConnectionString("TimeSheet")));
