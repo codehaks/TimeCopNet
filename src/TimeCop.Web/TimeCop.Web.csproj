@@ -10,6 +10,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Areas\Staff\**" />
+    <Content Remove="Areas\Staff\**" />
+    <EmbeddedResource Remove="Areas\Staff\**" />
+    <None Remove="Areas\Staff\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.7" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.7" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.7" />
@@ -26,10 +33,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Staff\Controllers\" />
-    <Folder Include="Areas\Staff\Data\" />
-    <Folder Include="Areas\Staff\Models\" />
-    <Folder Include="Areas\Staff\Views\" />
+    <Folder Include="Areas\User\Pages\" />
   </ItemGroup>
 
 </Project>
