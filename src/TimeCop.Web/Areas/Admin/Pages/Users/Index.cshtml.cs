@@ -2,23 +2,24 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using TimeCop.Identity;
 using TimeCop.Identity.Models;
 
 namespace TimeCop.Web.Areas.Admin.Pages.Users;
 
 public class IndexModel : PageModel
 {
-    private readonly UserManager<ApplicationUser> _userManager;
+    private readonly IUserService _userService;
 
-    public IndexModel(UserManager<ApplicationUser> userManager)
+    public IndexModel( IUserService userService)
     {
-        _userManager = userManager;
+        _userService = userService;
     }
 
-    public IList<ApplicationUser> UserList { get; set; }
+    public IList<UserItem> UserList { get; set; }
     public async Task<IActionResult> OnGet()
     {
-        UserList = await _userManager.Users.ToListAsync();
+        UserList = await _userService.FindAllAsync();
         return Page();
     }
 }

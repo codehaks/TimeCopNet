@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.Net.NetworkInformation;
+using TimeCop.Identity;
 using TimeCop.Identity.Models;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Model;
 
@@ -16,12 +17,12 @@ public class Input
 }
 public class CreateModel : PageModel
 {
-    private readonly UserManager<ApplicationUser> _userManager;
+    private readonly IUserService _userService;
     private readonly ILogger<CreateModel> _logger;
 
-    public CreateModel(UserManager<ApplicationUser> userManager, ILogger<CreateModel> logger)
+    public CreateModel(IUserService userService, ILogger<CreateModel> logger)
     {
-        _userManager = userManager;
+        _userService = userService;
         _logger = logger;
     }
 
@@ -29,14 +30,14 @@ public class CreateModel : PageModel
     public Input Input { get; set; }
     public async Task<IActionResult> OnPostAsync()
     {
-        if (ModelState.IsValid==false)
+        if (ModelState.IsValid == false)
         {
             RedirectToPage();
         }
-        var user = Input.Adapt<ApplicationUser>();
-        var result = await _userManager.CreateAsync(user);
 
-        if (result.Succeeded)
+        var suceeded = await _userService.CreateUser(Input.UserName, Input.Email);
+
+        if (suceeded)
         {
 
             return RedirectToPage("./index");

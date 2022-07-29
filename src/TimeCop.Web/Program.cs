@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
+using TimeCop.Identity;
 using TimeCop.Identity.Data;
 using TimeCop.Identity.Models;
 using TimeCop.TimeSheet;
@@ -20,6 +21,8 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options => options.S
     .AddDefaultTokenProviders();
 
 builder.Services.AddRazorPages();
+
+builder.Services.AddScoped<IUserService, UserService>();
 var app = builder.Build();
 
 
