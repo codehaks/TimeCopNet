@@ -1,0 +1,24 @@
+﻿@page
+@model TimeCop.Web.Areas.Admin.Pages.Users.EditModel
+@{
+}
+
+<h2>Edit User</h2>
+<hr />
+<form method="post" enctype="multipart/form-data">
+
+    <input asp-for="Input.UserId" hidden />
+    <div class="mb-3">
+        <label asp-for="Input.UserName" class="form-label"></label>
+        <input asp-for="Input.UserName" class="form-control" />
+        <span asp-validation-for="Input.UserName" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Input.Email" class="form-label"></label>
+        <input asp-for="Input.Email" class="form-control" />
+        <span asp-validation-for="Input.Email" class="text-danger"></span>
+    </div>
+
+    <button class="btn btn-primary mb-5">Submit</button>
+</form>

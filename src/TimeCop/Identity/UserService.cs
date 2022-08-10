@@ -26,4 +26,10 @@ public class UserService : IUserService
         var users = _userManager.Users.ProjectToType<UserItem>();
         return await users.ToListAsync();
     }
+
+    public async Task<UserItem> FindAsync(string userId)
+    {
+       return await _userManager
+            .Users.ProjectToType<UserItem>().FirstAsync(u => u.Id == userId);
+    }
 }

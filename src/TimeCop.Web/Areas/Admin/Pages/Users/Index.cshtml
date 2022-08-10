@@ -14,7 +14,9 @@
     {
         <tr>
             <td>@user.UserName</td>
-
+            <td>
+                <a asp-page="./edit" asp-area="admin" asp-route-userid="@user.Id" class="btn btn-primary">Edit</a>
+            </td>
         </tr>
     }
 
