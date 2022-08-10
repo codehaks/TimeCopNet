@@ -52,8 +52,12 @@ public class IndexModel : PageModel
     public string ErrorMessage { get; set; }
 
     public string ReturnUrl { get; set; }
-    public async Task OnGetAsync(string returnUrl = null)
+    public async Task<IActionResult> OnGetAsync(string? returnUrl)
     {
+        if (User.Identity is not null && User.Identity.IsAuthenticated)
+        {
+           return  RedirectToPage("/index", new { area = "user" });
+        }
         if (!string.IsNullOrEmpty(ErrorMessage))
         {
             ModelState.AddModelError(string.Empty, ErrorMessage);
@@ -66,6 +70,7 @@ public class IndexModel : PageModel
 
 
         ReturnUrl = returnUrl;
+        return Page();
     }
 
 
