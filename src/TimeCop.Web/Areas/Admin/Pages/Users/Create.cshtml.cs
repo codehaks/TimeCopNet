@@ -14,6 +14,8 @@ public class Input
 {
     public string UserName { get; set; } = default!;
     public string Email { get; set; } = default!;
+
+    public string Password { get; set; } = default!;
 }
 public class CreateModel : PageModel
 {
@@ -35,7 +37,7 @@ public class CreateModel : PageModel
             RedirectToPage();
         }
 
-        var suceeded = await _userService.CreateUser(Input.UserName, Input.Email);
+        var suceeded = await _userService.CreateUser(Input.UserName, Input.Email, Input.Password);
 
         if (suceeded)
         {

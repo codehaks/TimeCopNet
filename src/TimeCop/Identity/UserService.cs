@@ -14,10 +14,10 @@ public class UserService : IUserService
         _userManager = userManager;
     }
 
-    public async Task<bool> CreateUser(string userName, string userEmail)
+    public async Task<bool> CreateUser(string userName, string userEmail, string password)
     {
         var user = new ApplicationUser { UserName = userName, Email = userEmail };
-        var result = await _userManager.CreateAsync(user);
+        var result = await _userManager.CreateAsync(user, password);
         return result.Succeeded;
     }
 

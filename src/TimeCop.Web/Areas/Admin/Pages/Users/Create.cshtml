@@ -3,7 +3,6 @@
 @{
 }
 
-
 <h2>New User</h2>
 <hr />
 <form method="post" enctype="multipart/form-data">
@@ -17,6 +16,12 @@
         <label asp-for="Input.Email" class="form-label"></label>
         <input asp-for="Input.Email" class="form-control" />
         <span asp-validation-for="Input.Email" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Input.Password" class="form-label"></label>
+        <input asp-for="Input.Password" class="form-control" />
+        <span asp-validation-for="Input.Password" class="text-danger"></span>
     </div>
 
     <button class="btn btn-primary mb-5">Submit</button>
