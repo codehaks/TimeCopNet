@@ -7,7 +7,7 @@ namespace TimeCop.Web.Areas.Admin.Pages.Users;
 
 public class EditInput
 {
-    public string UserId { get; set; } = default!;
+    public string Id { get; set; } = default!;
     public string UserName { get; set; } = default!;
     public string Email { get; set; } = default!;
 }
@@ -20,10 +20,17 @@ public class EditModel : PageModel
         _userService = userService;
     }
 
+    [BindProperty]
     public EditInput Input { get; set; }
     public async Task<IActionResult> OnGet(string userId)
     {
         Input = (await _userService.FindAsync(userId)).Adapt<EditInput>();
         return Page();
+    }
+
+    public async Task<IActionResult> OnPost()
+    {
+        await _userService.UpdateAsync(Input.Adapt<UserItem>());
+        return RedirectToPage("./index");
     }
 }

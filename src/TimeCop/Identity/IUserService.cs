@@ -15,4 +15,5 @@ public interface IUserService
     Task<bool> CreateUser(string userName, string userEmail);
     Task<IList<UserItem>> FindAllAsync();
     Task<UserItem> FindAsync(string userId);
+    Task UpdateAsync(UserItem userItem);
 }

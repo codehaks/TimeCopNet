@@ -29,7 +29,14 @@ public class UserService : IUserService
 
     public async Task<UserItem> FindAsync(string userId)
     {
-       return await _userManager
-            .Users.ProjectToType<UserItem>().FirstAsync(u => u.Id == userId);
+        return await _userManager
+             .Users.ProjectToType<UserItem>().FirstAsync(u => u.Id == userId);
+    }
+
+    public async Task UpdateAsync(UserItem userItem)
+    {
+        var user = await _userManager.FindByIdAsync(userItem.Id);
+        user.Email = userItem.Email;
+        await _userManager.UpdateAsync(user);
     }
 }
