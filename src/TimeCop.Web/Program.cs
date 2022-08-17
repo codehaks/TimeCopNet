@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using TimeCop.Identity;
 using TimeCop.Identity.Data;
 using TimeCop.Identity.Models;
-using TimeCop.TimeSheet;
+using TimeCop.TimeSheet.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddTransient<IEmailSender, TimeCop.Identity.EmailSender>();

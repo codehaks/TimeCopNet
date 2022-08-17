@@ -23,4 +23,8 @@
     <PackageReference Include="Npgsql.NodaTime" Version="6.0.4" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="TimeSheet\Domain\" />
+  </ItemGroup>
+
 </Project>
