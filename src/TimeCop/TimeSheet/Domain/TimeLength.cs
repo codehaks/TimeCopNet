@@ -12,4 +12,9 @@ public class TimeLength
 		
 	}
     public int Value { get; init; }
+
+	public int GetHours()
+	{
+		return Value / 60;
+	}
 }
