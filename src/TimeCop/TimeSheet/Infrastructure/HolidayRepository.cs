@@ -23,15 +23,18 @@ public class HolidayRepository : IHolidayRepository
         await _db.SaveChangesAsync();
     }
 
+    public async Task<Holiday> Find(int id)
+    => await _db.Holidays.FindAsync(id);
+
     public async Task UpdateOvertime(OvertimeInput input)
     {
         var holiday = _db.Holidays.Find(input.Id);
 
         // validate
 
-        holiday.CanOvertime=input.CanOvertime;
+        holiday.CanOvertime = input.CanOvertime;
         holiday.OverTimeLimit = input.OverTimeLimit;
-        holiday.OverTimeRate=input.OverTimeRate;
+        holiday.OverTimeRate = input.OverTimeRate;
 
         await _db.SaveChangesAsync();
     }
