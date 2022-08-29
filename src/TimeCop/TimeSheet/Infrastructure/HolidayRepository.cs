@@ -33,7 +33,7 @@ public class HolidayRepository : IHolidayRepository
         // validate
 
         holiday.CanOvertime = input.CanOvertime;
-        holiday.OverTimeLimit = input.OverTimeLimit;
+        holiday.OverTimeLimit = input.OverTimeLimit.Value;
         holiday.OverTimeRate = input.OverTimeRate;
 
         await _db.SaveChangesAsync();

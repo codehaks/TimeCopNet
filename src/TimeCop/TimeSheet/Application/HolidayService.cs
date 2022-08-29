@@ -15,7 +15,7 @@ public class OvertimeInput
 {
     public int Id { get; set; }
     public bool CanOvertime { get; set; }
-    public int OverTimeLimit { get; set; }
+    public TimeLength OverTimeLimit { get; set; }
     public int OverTimeRate { get; set; }
 }
 

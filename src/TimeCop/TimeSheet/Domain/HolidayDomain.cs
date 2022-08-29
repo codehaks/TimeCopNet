@@ -32,7 +32,7 @@ public class HolidayDomain
         else
         {
             CanOvertime = false;
-            OverTimeLimit = 5 * 60; //min
+            OverTimeLimit = new TimeLength(5*60); //min
             OverTimeRate = 1;
         }
 
@@ -57,6 +57,6 @@ public class HolidayDomain
     }
 
     public bool CanOvertime { get; set; }
-    public int OverTimeLimit { get; set; }
+    public TimeLength OverTimeLimit { get; set; }
     public int OverTimeRate { get; set; }
 }
