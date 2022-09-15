@@ -13,8 +13,8 @@ public class TimeLength
 	}
     public int Value { get; init; }
 
-	public int GetHours()
+	public double GetHours()
 	{
-		return Value / 60;
+		return Math.Round(Convert.ToSingle(Value) / 60,2);
 	}
 }
