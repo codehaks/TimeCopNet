@@ -28,5 +28,32 @@ namespace TimeCop.Test
 
             Assert.Equal(1.83, t.GetHours());
         }
+
+        [Fact]
+        public void TimeLength_with_same_data_are_equal()
+        {
+            var t1 = new TimeLength(10);
+            var t2 = new TimeLength(11);
+            if (t1!=t2)
+            {
+                Console.WriteLine("true");
+            }
+
+            Assert.NotEqual(t1, t2);
+        }
+
+
+
+        [Fact]
+        public void TimeLength_can_be_combined()
+        {
+            var t1 = new TimeLength(10);
+            var t2 = new TimeLength(15);
+            var t3 = t1 - t2; // 25
+
+            Assert.Equal(t3.Value,Math.Abs(t1.Value - t2.Value));
+        }
+
+
     }
 }
