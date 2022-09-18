@@ -20,6 +20,7 @@ public class HolidayRepository : IHolidayRepository
 
     public async Task AddHoliday(Holiday holiday)
     {
+        holiday.Date=holiday.Date.ToUniversalTime();
         _db.Holidays.Add(holiday);
         await _db.SaveChangesAsync();
     }

@@ -11,13 +11,13 @@ public class HolidayDomain
 {
     public HolidayDomain(DateTime date, string note, OvertimeInput overtimeInput, int id = 0)
     {
-        if (date > DateTime.Today.Date.AddDays(-1))
+        if (date < DateTime.Today.Date.AddDays(-1))
         {
             throw new ArgumentOutOfRangeException(nameof(date), "Date must be 1 day before start");
         }
         Date = date;
 
-        if (string.IsNullOrEmpty(Note))
+        if (string.IsNullOrEmpty(note))
         {
             throw new ArgumentOutOfRangeException(nameof(note), "Note must have value");
         }
