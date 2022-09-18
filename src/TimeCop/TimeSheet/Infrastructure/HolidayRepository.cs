@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,6 +26,11 @@ public class HolidayRepository : IHolidayRepository
 
     public async Task<Holiday> Find(int id)
     => await _db.Holidays.FindAsync(id);
+
+    public async Task<IList<Holiday>> GetAll()
+    {
+        return await _db.Holidays.ToListAsync();
+    }
 
     public async Task UpdateOvertime(OvertimeInput input)
     {

@@ -19,7 +19,18 @@ public class OvertimeInput
     public int OverTimeRate { get; set; }
 }
 
-public class HolidayService
+public class HolidayReadData
+{
+    public int Id { get; set; }
+    public DateTime Date { get; set; }
+    public string Note { get; set; }
+
+    public bool CanOvertime { get; set; }
+    public TimeLength OverTimeLimit { get; set; }
+    public int OverTimeRate { get; set; }
+}
+
+public class HolidayService : IHolidayService
 {
     private readonly IHolidayRepository _repository;
 
@@ -30,10 +41,18 @@ public class HolidayService
 
     public async Task Add(Holiday holiday)
     {
-        var domain = new HolidayDomain(holiday.Date, holiday.Note,null);
-        var dataModel=domain.Adapt<Holiday>();
+        var domain = new HolidayDomain(holiday.Date, holiday.Note, null);
+        var dataModel = domain.Adapt<Holiday>();
         //---
         await _repository.AddHoliday(dataModel);
+
+    }
+
+    public async Task<IList<HolidayReadData>> GetAll()
+    {
+        var data = (await _repository.GetAll())
+            .Adapt<IList<HolidayReadData>>();
+        return data;
 
     }
 
@@ -46,10 +65,13 @@ public class HolidayService
     {
         var holidayData = await _repository.Find(input.Id);
 
-        var domain = new HolidayDomain(holidayData.Date, holidayData.Note,input);
+        var domain = new HolidayDomain(holidayData.Date, holidayData.Note, input);
         domain.UpdateCanOvertime(input.CanOvertime);
 
         var dataModel = domain.Adapt<OvertimeInput>();
         await _repository.UpdateOvertime(dataModel);
     }
+
+
 }
+
