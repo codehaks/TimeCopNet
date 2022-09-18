@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TimeCop.TimeSheet.Domain;
 
 namespace TimeCop.TimeSheet.Models;
 
@@ -13,6 +14,6 @@ public class Holiday
     public string Note { get; set; }
 
     public bool CanOvertime { get; set; }
-    public int OverTimeLimit { get; set; }
+    public TimeLength OverTimeLimit { get; set; }
     public int OverTimeRate { get; set; }
 }

@@ -11,4 +11,9 @@ public class TimeSheetDbContext : DbContext
     }
     public DbSet<Job> Jobs { get; set; }
     public DbSet<Holiday> Holidays { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder builder)
+    {
+        builder.Entity<Holiday>().OwnsOne(h => h.OverTimeLimit);
+    }
 }
