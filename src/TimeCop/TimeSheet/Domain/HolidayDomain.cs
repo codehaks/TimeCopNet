@@ -3,10 +3,29 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TimeCop.Shared;
 using TimeCop.TimeSheet.Application;
 
 namespace TimeCop.TimeSheet.Domain;
 
+public class HolidayId:ValueObject
+{
+    public HolidayId(int value)
+    {
+        if (value<0)
+        {
+            throw new ArgumentOutOfRangeException();
+        }
+        Value = value;
+    }
+
+    public int Value { get; set; }
+
+    protected override IEnumerable<object> GetEqualityComponents()
+    {
+        yield return Value;
+    }
+}
 public class HolidayDomain
 {
     public HolidayDomain(DateTime date, string note, OvertimeInput overtimeInput, int id = 0)

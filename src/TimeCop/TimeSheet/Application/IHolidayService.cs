@@ -1,4 +1,5 @@
-﻿using TimeCop.TimeSheet.Models;
+﻿using TimeCop.TimeSheet.Domain;
+using TimeCop.TimeSheet.Models;
 
 namespace TimeCop.TimeSheet.Application
 {
@@ -6,7 +7,7 @@ namespace TimeCop.TimeSheet.Application
     {
         Task Add(Holiday holiday);
         Task<IList<HolidayReadData>> GetAll();
-        Task<Holiday> GetAsync(int holidayId);
+        Task<Holiday> GetAsync(HolidayId holidayId);
         Task UpdateOvertime(OvertimeInput input);
     }
 }

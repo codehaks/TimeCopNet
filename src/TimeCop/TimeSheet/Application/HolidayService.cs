@@ -56,9 +56,10 @@ public class HolidayService : IHolidayService
 
     }
 
-    public Task<Holiday> GetAsync(int holidayId)
+    public async Task<Holiday> GetAsync(HolidayId holidayId)
     {
-        throw new NotImplementedException();
+        var data=await _repository.Find(holidayId.Value);
+        return data;
     }
 
     public async Task UpdateOvertime(OvertimeInput input)
