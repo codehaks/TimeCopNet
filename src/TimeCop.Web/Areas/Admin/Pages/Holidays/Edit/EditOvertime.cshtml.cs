@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.ComponentModel.DataAnnotations;
 using TimeCop.TimeSheet.Application;
+using TimeCop.TimeSheet.Domain;
 
 namespace TimeCop.Web.Areas.Admin.Pages.Holidays.Edit;
 
@@ -31,7 +32,7 @@ public class EditOvertimeModel : PageModel
 
     public async Task<IActionResult> OnGet(int holidayId)
     {
-        var holiday = await _holidayService.GetAsync(holidayId);
+        var holiday = await _holidayService.GetAsync(new HolidayId(holidayId));
         return Page();
     }
 

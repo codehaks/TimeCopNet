@@ -11,7 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{EC5BA0CF-A83
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{BB22543A-3036-4B31-8944-973C647371F4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeCop.Test", "test\TimeCop.Test\TimeCop.Test.csproj", "{891DE987-DE00-4A42-A2E3-EBE2BEB72F43}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeCop.Test", "test\TimeCop.Test\TimeCop.Test.csproj", "{891DE987-DE00-4A42-A2E3-EBE2BEB72F43}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
