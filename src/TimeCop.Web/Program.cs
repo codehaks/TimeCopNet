@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
+using Npgsql;
 using TimeCop.Identity;
 using TimeCop.Identity.Data;
 using TimeCop.Identity.Models;
@@ -9,10 +10,15 @@ using TimeCop.TimeSheet.Infrastructure;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddTransient<IEmailSender, TimeCop.Identity.EmailSender>();
-builder.Services.AddDbContext<UserDbContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("Identity")));
+builder.Services.AddDbContext<UserDbContext>(options =>
+{
+    options.UseNpgsql(builder.Configuration.GetConnectionString("Identity"),b=>b.UseNodaTime());
+    
+});
+//NpgsqlConnection.GlobalTypeMapper.UseNodaTime();
 
 builder.Services.AddDbContext<TimeSheetDbContext>
-    (options => options.UseNpgsql(builder.Configuration.GetConnectionString("TimeSheet")));
+    (options => options.UseNpgsql(builder.Configuration.GetConnectionString("TimeSheet"), b => b.UseNodaTime()));
 
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = false)
     //.AddDefaultUI()
