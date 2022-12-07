@@ -4,9 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using TimeCop.Identity;
 using TimeCop.Identity.Data;
 using TimeCop.Identity.Models;
-using TimeCop.TimeSheet.Application;
 using TimeCop.TimeSheet.Infrastructure;
-using TimeCop.Web.Common;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,11 +23,6 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options => options.S
 builder.Services.AddRazorPages();
 
 builder.Services.AddScoped<IUserService, UserService>();
-
-builder.Services.AddHolidayApplication();
-
-//builder.Services.AddScoped<IHolidayRepository, HolidayRepository>();
-//builder.Services.AddScoped<IHolidayService, HolidayService>();
 
 var app = builder.Build();
 

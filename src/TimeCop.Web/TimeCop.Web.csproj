@@ -10,9 +10,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Areas\Admin\Pages\Holidays\**" />
     <Compile Remove="Areas\Staff\**" />
+    <Content Remove="Areas\Admin\Pages\Holidays\**" />
     <Content Remove="Areas\Staff\**" />
+    <EmbeddedResource Remove="Areas\Admin\Pages\Holidays\**" />
     <EmbeddedResource Remove="Areas\Staff\**" />
+    <None Remove="Areas\Admin\Pages\Holidays\**" />
     <None Remove="Areas\Staff\**" />
   </ItemGroup>
 
@@ -29,7 +33,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TimeCop\TimeCop.csproj" />
+    <ProjectReference Include="..\TimeCop.Identity\TimeCop.Identity.csproj" />
+    <ProjectReference Include="..\TimeCop.Shared\TimeCop.Shared.csproj" />
+    <ProjectReference Include="..\TimeCop.TimeSheet\TimeCop.TimeSheet.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Common\" />
   </ItemGroup>
 
 </Project>
