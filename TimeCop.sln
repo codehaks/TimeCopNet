@@ -11,11 +11,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{BB22543A-3
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeCop.Test", "test\TimeCop.Test\TimeCop.Test.csproj", "{891DE987-DE00-4A42-A2E3-EBE2BEB72F43}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeCop.Identity", "src\TimeCop.Identity\TimeCop.Identity.csproj", "{950762A6-8FFF-4F9E-AC57-2E933527B137}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeCop.Identity", "src\TimeCop.Identity\TimeCop.Identity.csproj", "{950762A6-8FFF-4F9E-AC57-2E933527B137}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeCop.Shared", "src\TimeCop.Shared\TimeCop.Shared.csproj", "{6CEF3E14-35EC-452E-BD4F-C5D5F66C6EAE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeCop.Shared", "src\TimeCop.Shared\TimeCop.Shared.csproj", "{6CEF3E14-35EC-452E-BD4F-C5D5F66C6EAE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeCop.TimeSheet", "src\TimeCop.TimeSheet\TimeCop.TimeSheet.csproj", "{DA27D415-5422-4471-9C06-4A3968C1FAEB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeCop.TimeSheet", "src\TimeCop.TimeSheet\TimeCop.TimeSheet.csproj", "{DA27D415-5422-4471-9C06-4A3968C1FAEB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

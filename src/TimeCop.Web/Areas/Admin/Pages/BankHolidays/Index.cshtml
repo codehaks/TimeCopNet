@@ -1,0 +1,30 @@
+﻿@page
+@model TimeCop.Web.Areas.Admin.Pages.BankHolidays.IndexModel
+@{
+}
+
+
+<h1>Bank Holidays</h1>
+<hr />
+
+<a class="btn btn-primary mb-3 mt-3" asp-page="./create" asp-area="admin">Add New</a>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th> Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var holiday in Model.BankHolidays)
+        {
+            <tr>
+                <td>@holiday.Name</td>
+                <td>@holiday.Date</td>
+
+            </tr>
+        }
+    </tbody>
+
+</table>

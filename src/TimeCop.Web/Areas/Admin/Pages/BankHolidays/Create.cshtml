@@ -1,0 +1,24 @@
+﻿@page
+@model TimeCop.Web.Areas.Admin.Pages.BankHolidays.CreateModel
+@{
+}
+
+
+<h2>New Bank Holiday</h2>
+<hr />
+<form method="post" enctype="multipart/form-data">
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Date" class="form-label"></label>
+        <input asp-for="Date" class="form-control" type="date"/>
+        <span asp-validation-for="Date" class="text-danger"></span>
+    </div>
+
+
+    <button class="btn btn-primary mb-5">Submit</button>
+</form>

@@ -6,6 +6,7 @@ using TimeCop.Identity;
 using TimeCop.Identity.Data;
 using TimeCop.Identity.Models;
 using TimeCop.TimeSheet.Infrastructure;
+using TimeCop.TimeSheet.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,6 +30,7 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options => options.S
 builder.Services.AddRazorPages();
 
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IBankHolidayService,BankHolidayService>();
 
 var app = builder.Build();
 
