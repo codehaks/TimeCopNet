@@ -10,17 +10,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Areas\Admin\Pages\Holidays\**" />
-    <Compile Remove="Areas\Staff\**" />
-    <Content Remove="Areas\Admin\Pages\Holidays\**" />
-    <Content Remove="Areas\Staff\**" />
-    <EmbeddedResource Remove="Areas\Admin\Pages\Holidays\**" />
-    <EmbeddedResource Remove="Areas\Staff\**" />
-    <None Remove="Areas\Admin\Pages\Holidays\**" />
-    <None Remove="Areas\Staff\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Content Remove="compilerconfig.json" />
   </ItemGroup>
 
