@@ -10,6 +10,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Common\**" />
+    <Content Remove="Common\**" />
+    <EmbeddedResource Remove="Common\**" />
+    <None Remove="Common\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Remove="compilerconfig.json" />
   </ItemGroup>
 
@@ -31,10 +38,6 @@
     <ProjectReference Include="..\TimeCop.Identity\TimeCop.Identity.csproj" />
     <ProjectReference Include="..\TimeCop.Shared\TimeCop.Shared.csproj" />
     <ProjectReference Include="..\TimeCop.TimeSheet\TimeCop.TimeSheet.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Common\" />
   </ItemGroup>
 
 
