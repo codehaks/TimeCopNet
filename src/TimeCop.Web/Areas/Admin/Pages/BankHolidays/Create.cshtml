@@ -16,10 +16,13 @@
 
     <div class="mb-3">
         <label asp-for="Date" class="form-label"></label>
-        <input asp-for="Date" class="form-control" type="date"/>
+        <input asp-for="Date" class="form-control" type="date" />
         <span asp-validation-for="Date" class="text-danger"></span>
     </div>
 
 
     <button class="btn btn-primary mb-5">Submit</button>
 </form>
+@section scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
