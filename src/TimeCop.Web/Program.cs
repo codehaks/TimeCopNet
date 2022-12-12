@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using Npgsql;
+using Serilog;
 using TimeCop.Identity;
 using TimeCop.Identity.Data;
 using TimeCop.Identity.Models;
@@ -9,6 +10,8 @@ using TimeCop.TimeSheet.Infrastructure;
 using TimeCop.TimeSheet.Services;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Host.UseSerilog(WriteLogs());
 
 builder.Services.AddTransient<IEmailSender, TimeCop.Identity.EmailSender>();
 builder.Services.AddDbContext<UserDbContext>(options =>
@@ -56,3 +59,9 @@ app.UseAuthorization();
 app.MapRazorPages();
 
 app.Run();
+
+static Action<HostBuilderContext, LoggerConfiguration> WriteLogs()
+    => (webHostBuilderContext, logger) =>
+    {
+        logger.ReadFrom.Configuration(webHostBuilderContext.Configuration);
+    };
