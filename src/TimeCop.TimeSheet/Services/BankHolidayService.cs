@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Ardalis.GuardClauses;
+using Microsoft.EntityFrameworkCore;
 using NodaTime;
 using System;
 using System.Collections.Generic;
@@ -19,26 +20,16 @@ public class BankHolidayService : IBankHolidayService
         _db = db;
     }
 
+
     public async Task Create(LocalDate date, string name)
     {
         // Pre-conditions
-        ValidateCreateBankHoliday(date, name);
+        Guard.Against.NullOrEmpty(name, nameof(name), "Name can not be null or empty");
+        Guard.Against.OutOfRange(date, nameof(date), rangeFrom: LocalDate.FromDateTime(DateTime.Now), LocalDate.FromDateTime(DateTime.Now.AddYears(100)), message: "Date can not be in the past");
 
+        // Happy path
         _db.BankHolidays.Add(new Data.BankHoliday { Date = date, Name = name });
         await _db.SaveChangesAsync();
-    }
-
-    public static void ValidateCreateBankHoliday(LocalDate date, string name)
-    {
-        if (string.IsNullOrEmpty(name))
-        {
-            throw new ArgumentNullException(nameof(name), "Name can not be null or empty");
-        }
-
-        if (date <= LocalDate.FromDateTime(DateTime.Now))
-        {
-            throw new ArgumentOutOfRangeException(nameof(date), "Date can not be in the past");
-        }
     }
 
     public IList<BankHoliday> GetAll()
