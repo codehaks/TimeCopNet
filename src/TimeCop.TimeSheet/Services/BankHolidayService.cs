@@ -21,8 +21,24 @@ public class BankHolidayService : IBankHolidayService
 
     public async Task Create(LocalDate date, string name)
     {
+        // Pre-conditions
+        ValidateCreateBankHoliday(date, name);
+
         _db.BankHolidays.Add(new Data.BankHoliday { Date = date, Name = name });
         await _db.SaveChangesAsync();
+    }
+
+    public static void ValidateCreateBankHoliday(LocalDate date, string name)
+    {
+        if (string.IsNullOrEmpty(name))
+        {
+            throw new ArgumentNullException(nameof(name), "Name can not be null or empty");
+        }
+
+        if (date <= LocalDate.FromDateTime(DateTime.Now))
+        {
+            throw new ArgumentOutOfRangeException(nameof(date), "Date can not be in the past");
+        }
     }
 
     public IList<BankHoliday> GetAll()

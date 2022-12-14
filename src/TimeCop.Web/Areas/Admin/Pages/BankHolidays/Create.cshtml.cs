@@ -51,21 +51,13 @@ public class CreateModel : PageModel
     {
         // Input Validation
 
-        //var validationResult = new BankHolidayValidator().Validate(Input);
+        //var validationResult =_validator.Validate(Input);
 
-        //if (validationResult.IsValid==false)
+        //if (validationResult.IsValid == false)
         //{
-        //    var errs = validationResult.Errors;
+        //    validationResult.AddErrorsToModelState(this.ModelState);
         //    return Page();
         //}
-
-        var validationResult =_validator.Validate(Input);
-
-        if (validationResult.IsValid == false)
-        {
-            validationResult.AddErrorsToModelState(this.ModelState);
-            return Page();
-        }
 
         // Run inside operation
         await _bankHolidayService.Create(Input.Date.ToLocalDate(),Input.Name);
