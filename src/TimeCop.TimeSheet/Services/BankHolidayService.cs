@@ -21,38 +21,8 @@ public class BankHolidayService : IBankHolidayService
 
     public async Task Create(LocalDate date, string name)
     {
-        // Pre-Conditions
-        var nameHasValue = string.IsNullOrEmpty(name) == false;
-        var dateIsInFuture = date >= new LocalDate();
-
-
-        if ((dateIsInFuture && nameHasValue) == false)
-        {
-            throw new ArgumentOutOfRangeException("Date or Name is not valid.");
-        }
-
-        try
-        {
-            // Happy Path
-            _db.BankHolidays.Add(new Data.BankHoliday { Date = date, Name = name });
-            var stateEnteries = await _db.SaveChangesAsync();
-
-            // Post-Condition
-            if (stateEnteries <= 0)
-            {
-                throw new InvalidOperationException("Could not store new Bank Holiday.");
-            }
-        }
-        catch (DbUpdateException dbEx)
-        {
-
-            throw dbEx;
-        }
-
-
-
-
-
+        _db.BankHolidays.Add(new Data.BankHoliday { Date = date, Name = name });
+        await _db.SaveChangesAsync();
     }
 
     public IList<BankHoliday> GetAll()
