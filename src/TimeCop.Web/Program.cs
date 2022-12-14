@@ -1,3 +1,5 @@
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
@@ -8,10 +10,14 @@ using TimeCop.Identity.Data;
 using TimeCop.Identity.Models;
 using TimeCop.TimeSheet.Infrastructure;
 using TimeCop.TimeSheet.Services;
+using TimeCop.Web.Areas.Admin.Pages.BankHolidays;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Host.UseSerilog(WriteLogs());
+
+builder.Services.AddValidatorsFromAssemblyContaining<BankHolidayValidator>();
+
 
 builder.Services.AddTransient<IEmailSender, TimeCop.Identity.EmailSender>();
 builder.Services.AddDbContext<UserDbContext>(options =>
