@@ -5,6 +5,12 @@ namespace TimeCop.TimeSheet.Services;
 
 public interface IBankHolidayService
 {    
-    Task Create(LocalDate date, string name);
+    Task Create(BankHolidayInput input);
     IList<BankHoliday> GetAll();
+}
+
+public class BankHolidayInput
+{
+    public LocalDate Date { get; set; }
+    public required string Name { get; set; }
 }

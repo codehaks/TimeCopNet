@@ -6,8 +6,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using TimeCop.TimeSheet.Data;
+using TimeCop.TimeSheet.Domain;
 using TimeCop.TimeSheet.Infrastructure;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace TimeCop.TimeSheet.Services;
 
@@ -21,14 +24,22 @@ public class BankHolidayService : IBankHolidayService
     }
 
 
-    public async Task Create(LocalDate date, string name)
+    public async Task Create(BankHolidayInput input)
     {
-        // Pre-conditions
-        Guard.Against.NullOrEmpty(name, nameof(name), "Name can not be null or empty");
-        Guard.Against.OutOfRange(date, nameof(date), rangeFrom: LocalDate.FromDateTime(DateTime.Now), LocalDate.FromDateTime(DateTime.Now.AddYears(100)), message: "Date can not be in the past");
+        var domain = new BankHolidayDomain { Date= input.Date, Name= input.Name};
+        if (domain.IsValid()==false)
+        {
+            // log
+            //domain.BrokenRules;
+        } 
+     
+
+        // Precondition
+        Guard.Against.NullOrEmpty(input.Name, nameof(input.Name), "Name can not be null or empty");
+        Guard.Against.OutOfRange(input.Date, nameof(input.Date), rangeFrom: LocalDate.FromDateTime(DateTime.Now), LocalDate.FromDateTime(DateTime.Now.AddYears(100)), message: "Date can not be in the past");
 
         // Happy path
-        _db.BankHolidays.Add(new Data.BankHoliday { Date = date, Name = name });
+        _db.BankHolidays.Add(new Data.BankHoliday { Date = domain.Date, Name = domain.Name });
         await _db.SaveChangesAsync();
     }
 
