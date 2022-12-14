@@ -10,24 +10,38 @@ using System.Xml.Linq;
 
 namespace TimeCop.TimeSheet.Domain;
 
+public interface IValidator<T>
+{
+    bool IsValid(T entity);
+    IEnumerable<string> BrokenRules(T entity);
+}
+
+public class BankHolidayDomainValidator : IValidator<BankHolidayDomain>
+{
+    public IEnumerable<string> BrokenRules(BankHolidayDomain entity)
+    {
+        if (string.IsNullOrEmpty(entity.Name))
+            yield return "Name can not be null or empty";
+
+
+        if (entity.Date <= LocalDate.FromDateTime(DateTime.Now))
+            yield return "Date can not be in the past";
+    }
+
+    public bool IsValid(BankHolidayDomain entity)
+    {
+        return BrokenRules(entity).Count() > 0;
+    }
+}
+
 public class BankHolidayDomain
 {
-    public bool IsValid()
+    public BankHolidayDomain(LocalDate date, string name)
     {
-        return BrokenRules().Count() > 0;
+        Date = date;
+        Name = name;
     }
-
-    public IEnumerable<string> BrokenRules()
-    {
-        if (string.IsNullOrEmpty(Name))   
-            yield return "Name can not be null or empty";
   
-
-        if (Date <= LocalDate.FromDateTime(DateTime.Now))  
-            yield return "Date can not be in the past";
-     
-    }
-    
-    public LocalDate Date { get; set; }
-    public string Name { get; set; }
+    public LocalDate Date { get; }
+    public string Name { get; }
 }
