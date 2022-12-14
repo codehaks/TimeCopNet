@@ -1,11 +1,12 @@
 ﻿using NodaTime;
+using TimeCop.Shared;
 using TimeCop.TimeSheet.Data;
 
 namespace TimeCop.TimeSheet.Services;
 
 public interface IBankHolidayService
 {    
-    Task Create(BankHolidayInput input);
+    Task<OperationResult<bool>> Create(BankHolidayInput input);
     IList<BankHoliday> GetAll();
 }
 

@@ -60,8 +60,16 @@ public class CreateModel : PageModel
         //}
 
         // Run inside operation
-        await _bankHolidayService.Create(Input.Date.ToLocalDate(),Input.Name);
+        var result= await _bankHolidayService.Create(new TimeSheet.Services.BankHolidayInput { Date = Input.Date.ToLocalDate(), Name = Input.Name });
 
-        return RedirectToPage("./Index");
+        if (result.Success)
+        {
+            return RedirectToPage("./Index");
+        }
+
+        ViewData["error"] = result.ErrorMessage;
+
+        return Page();
+        
     }
 }

@@ -24,4 +24,8 @@
     <PackageReference Include="Npgsql.NodaTime" Version="7.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\TimeCop.Shared\TimeCop.Shared.csproj" />
+  </ItemGroup>
+
 </Project>

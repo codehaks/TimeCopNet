@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using TimeCop.Shared;
 using TimeCop.TimeSheet.Data;
 using TimeCop.TimeSheet.Domain;
 using TimeCop.TimeSheet.Infrastructure;
@@ -24,15 +25,18 @@ public class BankHolidayService : IBankHolidayService
     }
 
 
-    public async Task Create(BankHolidayInput input)
+    public async Task<OperationResult<bool>> Create(BankHolidayInput input)
     {
-        var domain = new BankHolidayDomain { Date= input.Date, Name= input.Name};
-        if (domain.IsValid()==false)
+        var domain = new BankHolidayDomain(input.Date,input.Name);
+
+        var validator = new BankHolidayDomainValidator();
+
+
+        if (validator.IsValid(domain)==false)
         {
-            // log
-            //domain.BrokenRules;
-        } 
-     
+            return OperationResult<bool>.BuildFailure(validator.BrokenRules(domain).First());
+        }
+
 
         // Precondition
         Guard.Against.NullOrEmpty(input.Name, nameof(input.Name), "Name can not be null or empty");
@@ -41,6 +45,8 @@ public class BankHolidayService : IBankHolidayService
         // Happy path
         _db.BankHolidays.Add(new Data.BankHoliday { Date = domain.Date, Name = domain.Name });
         await _db.SaveChangesAsync();
+
+        return OperationResult<bool>.BuildSuccess(true);
     }
 
     public IList<BankHoliday> GetAll()

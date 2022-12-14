@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace TimeCop.Shared;
-
 public abstract class ValueObject
 {
     protected static bool EqualOperator(ValueObject left, ValueObject right)
