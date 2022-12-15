@@ -34,7 +34,7 @@ public class BankHolidayService : IBankHolidayService
 
         if (validator.IsValid(domain)==false)
         {
-            return OperationResult<bool>.BuildFailure(validator.BrokenRules(domain).First());
+            return OperationResult<bool>.BuildFailure(validator.BrokenRules(domain).ToList());
         }
 
 

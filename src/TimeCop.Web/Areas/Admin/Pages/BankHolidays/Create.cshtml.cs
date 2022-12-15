@@ -67,7 +67,9 @@ public class CreateModel : PageModel
             return RedirectToPage("./Index");
         }
 
-        ViewData["error"] = result.ErrorMessage;
+        //int.
+
+        ViewData["error"] = result.ErrorMessages?.First();
 
         return Page();
         

@@ -5,23 +5,23 @@ public class OperationResult<TResult>
     public TResult? Response { get; private set; }
 
     public bool Success { get; private set; }
-    public string? ErrorMessage { get; private set; }
+    public IList<string>? ErrorMessages { get; private set; }
     public Exception? Exception { get; private set; }
-
+  
     public static OperationResult<TResult> BuildSuccess(TResult result)
     {
         return new OperationResult<TResult> { Success = true, Response = result };
 
     }
 
-    public static OperationResult<TResult> BuildFailure(string errorMessage)
+    public static OperationResult<TResult> BuildFailure(IList<string> errorMessage)
     {
-        return new OperationResult<TResult> { Success = false, ErrorMessage = errorMessage };
+        return new OperationResult<TResult> { Success = false, ErrorMessages = errorMessage };
     }
 
-    public static OperationResult<TResult> BuildFailureWithResult(TResult result, string errorMessage)
+    public static OperationResult<TResult> BuildFailureWithResult(TResult result, IList<string> errorMessage)
     {
-        return new OperationResult<TResult> { Success = false, ErrorMessage = errorMessage, Response = result };
+        return new OperationResult<TResult> { Success = false, ErrorMessages = errorMessage, Response = result };
     }
 
     public static OperationResult<TResult> BuildFailure(Exception ex)
@@ -29,9 +29,9 @@ public class OperationResult<TResult>
         return new OperationResult<TResult> { Success = false, Exception = ex };
     }
 
-    public static OperationResult<TResult> BuildFailure(Exception ex, string errorMessage)
+    public static OperationResult<TResult> BuildFailure(Exception ex, IList<string> errorMessages)
     {
-        return new OperationResult<TResult> { Success = false, Exception = ex, ErrorMessage = errorMessage };
+        return new OperationResult<TResult> { Success = false, Exception = ex, ErrorMessages = errorMessages };
     }
 
 }
