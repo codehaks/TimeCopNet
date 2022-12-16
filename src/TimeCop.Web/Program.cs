@@ -39,6 +39,7 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options => options.S
 builder.Services.AddRazorPages();
 
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IStaffService, StaffService>();
 builder.Services.AddScoped<IBankHolidayService,BankHolidayService>();
 
 var app = builder.Build();

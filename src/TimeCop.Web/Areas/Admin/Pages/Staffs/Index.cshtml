@@ -2,3 +2,27 @@
 @model TimeCop.Web.Areas.Admin.Pages.Staffs.IndexModel
 @{
 }
+
+<h1>Staffs</h1>
+<hr />
+
+<a class="btn btn-primary mb-3 mt-3" asp-page="./create" asp-area="admin">Add New</a>
+
+<table class="table table-bordered">
+    @foreach (var staff in Model.StaffList)
+    {
+        <tr>
+            <td>@staff.FirstName</td>
+            <td>@staff.LastName</td>
+            <td>@staff.HolidayAllowance</td>
+            <td>@staff.IsActive</td>
+            <td>@staff.ContractHours</td>
+
+            <td>
+                <a asp-page="./details" asp-area="admin" asp-route-userid="@staff.Id" class="btn btn-info">Details</a>
+                <a asp-page="./edit" asp-area="admin" asp-route-userid="@staff.Id" class="btn btn-primary">Edit</a>
+            </td>
+        </tr>
+    }
+
+</table>
