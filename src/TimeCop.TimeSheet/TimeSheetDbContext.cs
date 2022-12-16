@@ -12,6 +12,7 @@ public class TimeSheetDbContext : DbContext
 
     public DbSet<BankHoliday> BankHolidays { get; set; }
     public DbSet<Staff> Staffs { get; set; }
+    public DbSet<HourData> Hours { get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
