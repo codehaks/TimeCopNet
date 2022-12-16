@@ -26,7 +26,7 @@ public class HourData
     public int Id { get; set; }
     public required string StaffName { get; set; }
     public string StaffId { get; set; }
-    public LocalTime LogTime { get; set; }
+    public LocalDateTime LogTime { get; set; }
     public required string Status { get; set; }
     public string? Note { get; set; }
 

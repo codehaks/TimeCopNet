@@ -7,7 +7,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace TimeCop.TimeSheet.Migrations
 {
     /// <inheritdoc />
-    public partial class StaffHours : Migration
+    public partial class StaffHoursDate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -20,14 +20,14 @@ namespace TimeCop.TimeSheet.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     StaffName = table.Column<string>(type: "text", nullable: false),
                     StaffId = table.Column<string>(type: "text", nullable: false),
-                    LogTime = table.Column<LocalTime>(type: "time", nullable: false),
+                    LogTime = table.Column<LocalDateTime>(type: "timestamp without time zone", nullable: false),
                     Status = table.Column<string>(type: "text", nullable: false),
                     Note = table.Column<string>(type: "text", nullable: true),
-                    ModifiedBy = table.Column<string>(type: "text", nullable: false),
-                    ModifyState = table.Column<string>(type: "text", nullable: false),
-                    ModifyReason = table.Column<string>(type: "text", nullable: false),
-                    ModifiedTo = table.Column<LocalTime>(type: "time", nullable: false),
-                    ModifiedFrom = table.Column<LocalTime>(type: "time", nullable: false)
+                    ModifiedBy = table.Column<string>(type: "text", nullable: true),
+                    ModifyState = table.Column<string>(type: "text", nullable: true),
+                    ModifyReason = table.Column<string>(type: "text", nullable: true),
+                    ModifiedTo = table.Column<LocalTime>(type: "time", nullable: true),
+                    ModifiedFrom = table.Column<LocalTime>(type: "time", nullable: true)
                 },
                 constraints: table =>
                 {

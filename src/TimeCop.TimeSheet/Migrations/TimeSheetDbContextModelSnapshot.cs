@@ -52,8 +52,8 @@ namespace TimeCop.TimeSheet.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<LocalTime>("LogTime")
-                        .HasColumnType("time");
+                    b.Property<LocalDateTime>("LogTime")
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("ModifiedBy")
                         .HasColumnType("text");
