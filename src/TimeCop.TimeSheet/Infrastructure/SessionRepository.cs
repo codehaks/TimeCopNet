@@ -35,5 +35,23 @@ public class SessionRepository : ISessionRepository
 
     }
 
+    public Session Get(int staffId)
+    {
+        var lastHours = _db.Hours.OrderByDescending(h => h.LogTime)
+            .Where(h => h.StaffId == staffId.ToString()).Take(2).ToList();
 
+        if (lastHours.Any() && lastHours.Last().Status == "in")
+        {
+            return Session.BuildByStartHour(lastHours.Last().Adapt<Hour>());
+        }
+
+        if (lastHours.Any() && lastHours.Last().Status == "out")
+        {
+            return Session.BuildByFullHours(lastHours.First().Adapt<Hour>(), lastHours.Last().Adapt<Hour>());
+        }
+
+        var staff = _db.Staffs.First(s => s.Id == staffId);
+        var session = new Session(staffId, staff.FirstName + " " +staff.LastName);
+        return session;
+    }
 }

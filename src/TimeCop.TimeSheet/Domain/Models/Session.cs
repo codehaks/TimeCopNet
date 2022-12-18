@@ -16,14 +16,62 @@ public enum SessionState
 
 public class Session
 {
-    private readonly string StaffId;
+    private readonly int StaffId;
     private readonly string StaffName;
 
-    public Session(string staffId, string staffName)
+    public Session(int staffId, string staffName)
     {
         StaffId = staffId;
         StaffName = staffName;
         State = SessionState.Todo;
+    }
+
+    public static Session BuildByStartHour(Hour startHour)
+    {
+        if (startHour.LogTime < LocalDateTime.FromDateTime(DateTime.Now.Date))
+        {
+            return new Session(int.Parse(startHour.StaffId), startHour.StaffName);
+        }
+
+        if (startHour.LogTime.Date == LocalDateTime.FromDateTime(DateTime.Now).Date)
+        {
+            var session= new Session(int.Parse(startHour.StaffId), startHour.StaffName);
+            session.SetStartHour(startHour);
+            return session;
+        }
+
+        throw new InvalidOperationException("Can not build session");
+    }
+
+    public static Session BuildByFullHours(Hour startHour,Hour endHour)
+    {
+        if (endHour.LogTime < LocalDateTime.FromDateTime(DateTime.Now.Date))
+        {
+            return new Session(int.Parse(startHour.StaffId), startHour.StaffName);
+        }
+
+        if (endHour.LogTime.Date == LocalDateTime.FromDateTime(DateTime.Now).Date)
+        {
+            var session = new Session(int.Parse(startHour.StaffId), startHour.StaffName);
+            session.SetStartHour(startHour);
+            session.SetEndHour(endHour);
+            return session;
+        }
+
+        throw new InvalidOperationException("Can not build session");
+
+    }
+
+    private void SetStartHour(Hour hour)
+    {
+        StartHour = hour;
+        State = SessionState.InProgress;
+    }
+
+    private void SetEndHour(Hour hour)
+    {
+        EndHour = hour;
+        State = SessionState.Done;
     }
 
     public Hour? StartHour { get; private set; }
