@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TimeCop.TimeSheet.Domain;
+namespace TimeCop.TimeSheet.Domain.Models;
 
 public class Hour
 {

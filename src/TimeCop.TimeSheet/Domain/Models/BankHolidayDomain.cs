@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using System.Xml.Linq;
 
-namespace TimeCop.TimeSheet.Domain;
+namespace TimeCop.TimeSheet.Domain.Models;
 
 public interface IValidator<T>
 {
@@ -41,7 +41,7 @@ public class BankHolidayDomain
         Date = date;
         Name = name;
     }
-  
+
     public LocalDate Date { get; }
     public string Name { get; }
 }

@@ -5,13 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TimeCop.TimeSheet.Domain;
+namespace TimeCop.TimeSheet.Domain.Models;
 
 public enum SessionState
 {
-    Todo=0,
-    InProgress=1,
-    Done=2
+    Todo = 0,
+    InProgress = 1,
+    Done = 2
 }
 
 public class Session
@@ -23,10 +23,13 @@ public class Session
     {
         StaffId = staffId;
         StaffName = staffName;
+        State = SessionState.Todo;
     }
 
     public Hour? StartHour { get; private set; }
     public Hour? EndHour { get; private set; }
+
+    public SessionState State { get; private set; }
 
     public void Start(string note = "")
     {
@@ -38,6 +41,8 @@ public class Session
             StaffName = StaffName,
             Status = "in"
         };
+
+        State = SessionState.InProgress;
     }
 
     public void End(Hour hour)
@@ -49,10 +54,12 @@ public class Session
                 LogTime = LocalDateTime.FromDateTime(DateTime.Now),
                 StaffId = StaffId,
                 StaffName = StaffName,
-                Note=StartHour.Note,
+                Note = StartHour.Note,
                 Status = "out"
             };
         }
+
+        State = SessionState.Done;
 
     }
 
