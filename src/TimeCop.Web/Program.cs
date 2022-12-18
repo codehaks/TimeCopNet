@@ -8,6 +8,7 @@ using Serilog;
 using TimeCop.Identity;
 using TimeCop.Identity.Data;
 using TimeCop.Identity.Models;
+using TimeCop.TimeSheet.Domain;
 using TimeCop.TimeSheet.Infrastructure;
 using TimeCop.TimeSheet.Services;
 using TimeCop.Web.Areas.Admin.Pages.BankHolidays;
@@ -41,6 +42,9 @@ builder.Services.AddRazorPages();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IStaffService, StaffService>();
 builder.Services.AddScoped<IBankHolidayService,BankHolidayService>();
+builder.Services.AddScoped<ISessionRepository,SessionRepository>();
+builder.Services.AddScoped<ISessionService, SessionService>();
+
 
 var app = builder.Build();
 

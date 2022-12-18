@@ -4,6 +4,14 @@
     ViewData["title"] = "Home";
 }
 
+<h2>
+     @if (Model.Session.StartHour is not null)
+    {
+        <p>@Model.Session.StartHour.Note</p>
+        <p>@Model.Session.StartHour.LogTime.ToString()</p>
+    }
+</h2>
+
 <h2>New Hour</h2>
 <hr />
 <form method="post" enctype="multipart/form-data">

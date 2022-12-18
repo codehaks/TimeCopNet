@@ -35,7 +35,7 @@ public class Session
 
         if (startHour.LogTime.Date == LocalDateTime.FromDateTime(DateTime.Now).Date)
         {
-            var session= new Session(startHour.StaffId, startHour.StaffName);
+            var session = new Session(startHour.StaffId, startHour.StaffName);
             session.SetStartHour(startHour);
             return session;
         }
@@ -43,7 +43,7 @@ public class Session
         throw new InvalidOperationException("Can not build session");
     }
 
-    public static Session BuildByFullHours(Hour startHour,Hour endHour)
+    public static Session BuildByFullHours(Hour startHour, Hour endHour)
     {
         if (endHour.LogTime < LocalDateTime.FromDateTime(DateTime.Now.Date))
         {
@@ -79,7 +79,20 @@ public class Session
 
     public SessionState State { get; private set; }
 
-    public void Start(string note = "")
+    public void AddHour(string note)
+    {
+        if (StartHour is null)
+        {
+            Start(note);
+        }
+
+        if (StartHour is not null && EndHour is null)
+        {
+            End();
+        }
+    }
+
+    private void Start(string note)
     {
 
         StartHour = new Hour
@@ -93,26 +106,28 @@ public class Session
         State = SessionState.InProgress;
     }
 
-    public void End(Hour hour)
+    private void End()
     {
-        if (StartHour is not null && hour.LogTime > StartHour.LogTime)
-        {
-            EndHour = new Hour
-            {
-                LogTime = LocalDateTime.FromDateTime(DateTime.Now),
-                StaffId = StaffId,
-                StaffName = StaffName,
-                Note = StartHour.Note,
-                Status = "out"
-            };
-        }
 
+        EndHour = new Hour
+        {
+            LogTime = LocalDateTime.FromDateTime(DateTime.Now),
+            StaffId = StaffId,
+            StaffName = StaffName,
+            Note = StartHour.Note,
+            Status = "out"
+        };
         State = SessionState.Done;
 
     }
 
     public Period GetLength()
     {
-        return EndHour.LogTime - StartHour.LogTime;
+        if (EndHour is not null && StartHour is not null)
+        {
+            return EndHour.LogTime - StartHour.LogTime;
+        }
+        
+        return Period.Zero;
     }
 }

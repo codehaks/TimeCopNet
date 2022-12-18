@@ -5,18 +5,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TimeCop.TimeSheet.Domain;
+using TimeCop.TimeSheet.Domain.Models;
 
 namespace TimeCop.TimeSheet.Services;
 
 public class HourInput
 {
     public required string StaffName { get; set; }
-    public string StaffId { get; set; }
-    public LocalDateTime LogTime { get; set; }
+    public int StaffId { get; set; }
     public string? Note { get; set; }
 }
 
-public class SessionService
+public class SessionService : ISessionService
 {
     private readonly ISessionRepository _sessionRepository;
 
@@ -27,6 +27,15 @@ public class SessionService
 
     public void Create(HourInput input)
     {
+        var session = _sessionRepository.Get(input.StaffId);
 
+        session.AddHour(input.Note);
+        _sessionRepository.Add(session);
+
+    }
+
+    public Session Get(int staffId)
+    {
+        return _sessionRepository.Get(staffId);
     }
 }

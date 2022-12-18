@@ -1,10 +1,15 @@
-﻿namespace TimeCop.Identity;
+﻿using System.ComponentModel.DataAnnotations;
 
-public class UserItem // Data Transfer Object
+namespace TimeCop.Identity;
+
+public class UserItem 
 {
     public string Id { get; init; } = default!;
     public string UserName { get; init; } = default!;
     public string Email { get; set; } = default!;
+    public string? FirstName { get; set; }
+    public string? LastName { get; set; }
+    public int StaffId { get; set; }
 
 }
 

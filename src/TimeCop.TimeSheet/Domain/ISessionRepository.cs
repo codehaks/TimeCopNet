@@ -4,7 +4,7 @@ namespace TimeCop.TimeSheet.Domain
 {
     public interface ISessionRepository
     {
-        void AddHour(Session session);
+        void Add(Session session);
         Session Get(int staffId);
     }
 }

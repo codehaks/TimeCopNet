@@ -19,7 +19,7 @@ public class SessionRepository : ISessionRepository
         _db = db;
     }
 
-    public void AddHour(Session session)
+    public void Add(Session session)
     {
         if (session.State == SessionState.InProgress && session.StartHour is not null)
         {
