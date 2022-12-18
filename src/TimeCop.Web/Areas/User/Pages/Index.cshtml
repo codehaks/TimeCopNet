@@ -4,4 +4,15 @@
     ViewData["title"] = "Home";
 }
 
-<h1>User Panel</h1>
+<h2>New Hour</h2>
+<hr />
+<form method="post" enctype="multipart/form-data">
+    <div class="mb-3">
+        <label asp-for="Note" class="form-label"></label>
+        <input asp-for="Note" class="form-control" />
+        <span asp-validation-for="Note" class="text-danger"></span>
+    </div>
+
+  
+    <button class="btn btn-primary mb-5">Save</button>
+</form>

@@ -41,7 +41,7 @@ namespace TimeCop.TimeSheet.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("BankHolidays");
+                    b.ToTable("BankHolidays", (string)null);
                 });
 
             modelBuilder.Entity("TimeCop.TimeSheet.Data.HourData", b =>
@@ -87,7 +87,7 @@ namespace TimeCop.TimeSheet.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Hours");
+                    b.ToTable("Hours", (string)null);
                 });
 
             modelBuilder.Entity("TimeCop.TimeSheet.Data.Staff", b =>
@@ -119,7 +119,7 @@ namespace TimeCop.TimeSheet.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Staffs");
+                    b.ToTable("Staffs", (string)null);
                 });
 #pragma warning restore 612, 618
         }

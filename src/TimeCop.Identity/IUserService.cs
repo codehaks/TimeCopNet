@@ -10,7 +10,7 @@ public class UserItem // Data Transfer Object
 
 public interface IUserService
 {
-    Task<bool> CreateUser(string userName, string userEmail, string password);
+    Task<bool> CreateUser(int staffId, string userName, string userEmail, string password);
     Task<IList<UserItem>> FindAllAsync();
     Task<UserItem> FindAsync(string userId);
     Task UpdateAsync(UserItem userItem);

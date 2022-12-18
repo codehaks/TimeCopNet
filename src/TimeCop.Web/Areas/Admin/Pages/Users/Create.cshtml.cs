@@ -12,9 +12,9 @@ namespace TimeCop.Web.Areas.Admin.Pages.Users;
 
 public class Input
 {
+    public int StaffId { get; set; }
     public string UserName { get; set; } = default!;
     public string Email { get; set; } = default!;
-
     public string Password { get; set; } = default!;
 }
 public class CreateModel : PageModel
@@ -37,15 +37,15 @@ public class CreateModel : PageModel
             RedirectToPage();
         }
 
-        var suceeded = await _userService.CreateUser(Input.UserName, Input.Email, Input.Password);
+        var suceeded = await _userService.CreateUser(Input.StaffId,Input.UserName, Input.Email, Input.Password);
 
         if (suceeded)
         {
-
+            _logger.LogInformation("User added");
             return RedirectToPage("./index");
         }
 
-        _logger.LogInformation("User added");
+      
         return RedirectToPage("./index");
     }
 

@@ -6,6 +6,13 @@
 <h2>New User</h2>
 <hr />
 <form method="post" enctype="multipart/form-data">
+
+    <div class="mb-3">
+        <label asp-for="Input.StaffId" class="form-label"></label>
+        <input asp-for="Input.StaffId" class="form-control" />
+        <span asp-validation-for="Input.StaffId" class="text-danger"></span>
+    </div>
+
     <div class="mb-3">
         <label asp-for="Input.UserName" class="form-label"></label>
         <input asp-for="Input.UserName" class="form-control" />

@@ -10,4 +10,6 @@ public class ApplicationUser : IdentityUser
 
     [MaxLength(50)]
     public string? LastName { get; set; }
+
+    public int StaffId { get; set; }
 }

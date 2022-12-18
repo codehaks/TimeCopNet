@@ -30,12 +30,12 @@ public class Session
     {
         if (startHour.LogTime < LocalDateTime.FromDateTime(DateTime.Now.Date))
         {
-            return new Session(int.Parse(startHour.StaffId), startHour.StaffName);
+            return new Session(startHour.StaffId, startHour.StaffName);
         }
 
         if (startHour.LogTime.Date == LocalDateTime.FromDateTime(DateTime.Now).Date)
         {
-            var session= new Session(int.Parse(startHour.StaffId), startHour.StaffName);
+            var session= new Session(startHour.StaffId, startHour.StaffName);
             session.SetStartHour(startHour);
             return session;
         }
@@ -47,19 +47,19 @@ public class Session
     {
         if (endHour.LogTime < LocalDateTime.FromDateTime(DateTime.Now.Date))
         {
-            return new Session(int.Parse(startHour.StaffId), startHour.StaffName);
+            return new Session(startHour.StaffId, startHour.StaffName);
         }
 
         if (endHour.LogTime.Date == LocalDateTime.FromDateTime(DateTime.Now).Date)
         {
-            var session = new Session(int.Parse(startHour.StaffId), startHour.StaffName);
+            var session = new Session(startHour.StaffId, startHour.StaffName);
             session.SetStartHour(startHour);
             session.SetEndHour(endHour);
             return session;
         }
 
-        throw new InvalidOperationException("Can not build session");
 
+        throw new InvalidOperationException("Can not build session");
     }
 
     private void SetStartHour(Hour hour)

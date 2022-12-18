@@ -14,9 +14,9 @@ public class UserService : IUserService
         _userManager = userManager;
     }
 
-    public async Task<bool> CreateUser(string userName, string userEmail, string password)
+    public async Task<bool> CreateUser(int staffId, string userName, string userEmail, string password)
     {
-        var user = new ApplicationUser { UserName = userName, Email = userEmail };
+        var user = new ApplicationUser {StaffId=staffId, UserName = userName, Email = userEmail };
         var result = await _userManager.CreateAsync(user, password);
         return result.Succeeded;
     }
