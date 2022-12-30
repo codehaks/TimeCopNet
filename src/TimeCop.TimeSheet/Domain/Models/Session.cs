@@ -99,6 +99,7 @@ public class Session
             LogTime = LocalDateTime.FromDateTime(DateTime.Now),
             StaffId = StaffId,
             StaffName = StaffName,
+            Note=note,
             Status = "in"
         };
 

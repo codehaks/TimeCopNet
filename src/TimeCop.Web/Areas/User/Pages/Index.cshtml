@@ -8,11 +8,15 @@
     @if (Model.Session.StartHour is not null)
     {
         <p>@Model.Session.StartHour.Note</p>
-        <p>@Model.Session.StartHour.LogTime.ToString()</p>
+        <p>Started at @Model.Session.StartHour.LogTime.TimeOfDay.ToString()</p>
+        <p>@Model.Session.State.ToString() </p>
+    }
+    else
+    {
+        <text>New Hour</text>
     }
 </h2>
 
-<h2>New Hour</h2>
 <hr />
 <form method="post" enctype="multipart/form-data">
     <div class="mb-3">
@@ -29,6 +33,13 @@
         <span asp-validation-for="Note" class="text-danger"></span>
     </div>
 
+    @if (Model.Session.State==TimeCop.TimeSheet.Domain.Models.SessionState.Todo)
+    {
+        <button class="btn btn-primary mb-5">Start</button>
+    }else
+    {
+        <button class="btn btn-primary mb-5">Done</button>
+    }
 
-    <button class="btn btn-primary mb-5">Save</button>
+    
 </form>
