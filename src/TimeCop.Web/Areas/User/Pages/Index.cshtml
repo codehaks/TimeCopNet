@@ -5,7 +5,7 @@
 }
 
 <h2>
-     @if (Model.Session.StartHour is not null)
+    @if (Model.Session.StartHour is not null)
     {
         <p>@Model.Session.StartHour.Note</p>
         <p>@Model.Session.StartHour.LogTime.ToString()</p>
@@ -17,10 +17,18 @@
 <form method="post" enctype="multipart/form-data">
     <div class="mb-3">
         <label asp-for="Note" class="form-label"></label>
-        <input asp-for="Note" class="form-control" />
+
+        @if (Model.Session.StartHour is not null)
+        {
+            <input name="Note" class="form-control" value="@Model.Session.StartHour.Note" disabled readonly />
+        }
+        else
+        {
+            <input asp-for="Note" class="form-control" />
+        }
         <span asp-validation-for="Note" class="text-danger"></span>
     </div>
 
-  
+
     <button class="btn btn-primary mb-5">Save</button>
 </form>

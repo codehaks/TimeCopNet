@@ -28,7 +28,7 @@ public class SessionRepository : ISessionRepository
 
         if (session.State == SessionState.Done && session.StartHour is not null)
         {
-            _db.Hours.Add(session.StartHour.Adapt<HourData>());
+            _db.Hours.Add(session.EndHour.Adapt<HourData>());
         }
 
         _db.SaveChanges();
@@ -40,14 +40,14 @@ public class SessionRepository : ISessionRepository
         var lastHours = _db.Hours.OrderByDescending(h => h.LogTime)
             .Where(h => h.StaffId == staffId.ToString()).Take(2).ToList();
 
-        if (lastHours.Any() && lastHours.Last().Status == "in")
+        if (lastHours.Any() && lastHours.First().Status == "in")
         {
-            return Session.BuildByStartHour(lastHours.Last().Adapt<Hour>());
+            return Session.BuildByStartHour(lastHours.First().Adapt<Hour>());
         }
 
         if (lastHours.Any() && lastHours.Last().Status == "out")
         {
-            return Session.BuildByFullHours(lastHours.First().Adapt<Hour>(), lastHours.Last().Adapt<Hour>());
+            return Session.BuildByFullHours(lastHours.Last().Adapt<Hour>(), lastHours.First().Adapt<Hour>());
         }
 
         var staff = _db.Staffs.First(s => s.Id == staffId);

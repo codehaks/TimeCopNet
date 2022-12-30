@@ -81,12 +81,11 @@ public class Session
 
     public void AddHour(string note)
     {
-        if (StartHour is null)
+        if (State == SessionState.Todo)
         {
             Start(note);
         }
-
-        if (StartHour is not null && EndHour is null)
+        else if (State == SessionState.InProgress)
         {
             End();
         }
@@ -127,7 +126,7 @@ public class Session
         {
             return EndHour.LogTime - StartHour.LogTime;
         }
-        
+
         return Period.Zero;
     }
 }
