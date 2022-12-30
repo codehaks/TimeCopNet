@@ -2,3 +2,17 @@
 @model TimeCop.Web.Areas.User.Pages.Sessions.IndexModel
 @{
 }
+
+
+<table class="table table-bordered">
+    @foreach (var session in Model.Sheet.Sessions)
+    {
+        <tr>
+            <td>@session.StartHour.Note</td>
+            <td>@session.StartHour.LogTime.TimeOfDay</td>
+            <td>@session.EndHour.LogTime.TimeOfDay</td>
+            <td>@session.GetLength().ToDuration().TotalMinutes</td>
+        </tr>
+    }
+
+</table>

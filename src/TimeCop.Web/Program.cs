@@ -44,7 +44,7 @@ builder.Services.AddScoped<IStaffService, StaffService>();
 builder.Services.AddScoped<IBankHolidayService,BankHolidayService>();
 builder.Services.AddScoped<ISessionRepository,SessionRepository>();
 builder.Services.AddScoped<ISessionService, SessionService>();
-
+builder.Services.AddScoped<ISheetRepository, SheetRepository>();
 
 var app = builder.Build();
 
