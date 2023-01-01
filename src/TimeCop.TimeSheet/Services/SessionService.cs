@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TimeCop.TimeSheet.Domain;
 using TimeCop.TimeSheet.Domain.Models;
+using TimeCop.TimeSheet.Infrastructure;
 
 namespace TimeCop.TimeSheet.Services;
 
@@ -19,18 +20,24 @@ public class HourInput
 public class SessionService : ISessionService
 {
     private readonly ISessionRepository _sessionRepository;
-
-    public SessionService(ISessionRepository sessionRepository)
+    private readonly IUoW _uoW;
+    public SessionService(ISessionRepository sessionRepository, IUoW uoW)
     {
         _sessionRepository = sessionRepository;
+        _uoW = uoW;
     }
 
     public void Create(HourInput input)
     {
-        var session = _sessionRepository.Get(input.StaffId);
+        // Validate
+        // Log
+        // ...
 
-        session.AddHour(input.Note);
-        _sessionRepository.Add(session);
+        var session = _sessionRepository.Get(input.StaffId); // Read Domain
+        session.AddHour(input.Note); // Update Domain
+        _sessionRepository.Add(session); // Domain -> Data
+
+        _uoW.CommitChange();
 
     }
 

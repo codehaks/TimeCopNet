@@ -31,8 +31,6 @@ public class SessionRepository : ISessionRepository
             _db.Hours.Add(session.EndHour.Adapt<HourData>());
         }
 
-        _db.SaveChanges();
-
     }
 
     public Session Get(int staffId)
