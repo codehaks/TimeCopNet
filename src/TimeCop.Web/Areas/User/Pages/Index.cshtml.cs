@@ -4,7 +4,6 @@ using System.Security.Claims;
 using TimeCop.Identity;
 using TimeCop.TimeSheet.Application.Services;
 using TimeCop.TimeSheet.Domain.Models;
-using TimeCop.TimeSheet.Services;
 
 namespace TimeCop.Web.Areas.User.Pages;
 

@@ -60,7 +60,7 @@ public class CreateModel : PageModel
         //}
 
         // Run inside operation
-        var result= await _bankHolidayService.Create(new TimeSheet.Services.BankHolidayInput { Date = Input.Date.ToLocalDate(), Name = Input.Name });
+        var result= await _bankHolidayService.Create(new TimeSheet.Application.Services.BankHolidayInput { Date = Input.Date.ToLocalDate(), Name = Input.Name });
 
         if (result.Success)
         {

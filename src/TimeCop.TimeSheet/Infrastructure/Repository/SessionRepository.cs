@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TimeCop.TimeSheet.Application;
 using TimeCop.TimeSheet.Domain.Models;
+using TimeCop.TimeSheet.Infrastructure.Persistence;
 using TimeCop.TimeSheet.Infrastructure.Persistence.DataModels;
 
 namespace TimeCop.TimeSheet.Infrastructure.Repository;
