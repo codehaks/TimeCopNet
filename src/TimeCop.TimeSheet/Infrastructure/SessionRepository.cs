@@ -5,7 +5,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TimeCop.TimeSheet.Data;
-using TimeCop.TimeSheet.Domain;
 using TimeCop.TimeSheet.Domain.Models;
 
 namespace TimeCop.TimeSheet.Infrastructure;

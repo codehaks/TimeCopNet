@@ -1,6 +1,6 @@
 ﻿using TimeCop.TimeSheet.Domain.Models;
 
-namespace TimeCop.TimeSheet.Domain
+namespace TimeCop.TimeSheet.Infrastructure
 {
     public interface ISessionRepository
     {
