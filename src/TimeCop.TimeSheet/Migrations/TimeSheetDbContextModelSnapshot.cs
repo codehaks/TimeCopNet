@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NodaTime;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
-using TimeCop.TimeSheet.Infrastructure;
+using TimeCop.TimeSheet.Infrastructure.Persistence;
 
 #nullable disable
 

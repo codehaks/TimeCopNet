@@ -4,10 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TimeCop.TimeSheet.Data;
+using TimeCop.TimeSheet.Application;
 using TimeCop.TimeSheet.Domain.Models;
+using TimeCop.TimeSheet.Infrastructure.Persistence.DataModels;
 
-namespace TimeCop.TimeSheet.Infrastructure;
+namespace TimeCop.TimeSheet.Infrastructure.Repository;
 
 public class SessionRepository : ISessionRepository
 {
@@ -50,7 +51,7 @@ public class SessionRepository : ISessionRepository
         }
 
         var staff = _db.Staffs.First(s => s.Id == staffId);
-        var session = new Session(staffId, staff.FirstName + " " +staff.LastName);
+        var session = new Session(staffId, staff.FirstName + " " + staff.LastName);
         return session;
     }
 }

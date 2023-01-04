@@ -8,8 +8,10 @@ using Serilog;
 using TimeCop.Identity;
 using TimeCop.Identity.Data;
 using TimeCop.Identity.Models;
-using TimeCop.TimeSheet.Infrastructure;
-using TimeCop.TimeSheet.Services;
+using TimeCop.TimeSheet.Application;
+using TimeCop.TimeSheet.Application.Services;
+using TimeCop.TimeSheet.Infrastructure.Persistence;
+using TimeCop.TimeSheet.Infrastructure.Repository;
 using TimeCop.Web.Areas.Admin.Pages.BankHolidays;
 
 var builder = WebApplication.CreateBuilder(args);

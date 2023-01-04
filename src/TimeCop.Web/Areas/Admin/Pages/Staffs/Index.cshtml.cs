@@ -1,8 +1,8 @@
 using Ardalis.GuardClauses;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using TimeCop.TimeSheet.Data;
-using TimeCop.TimeSheet.Services;
+using TimeCop.TimeSheet.Application.Services;
+using TimeCop.TimeSheet.Infrastructure.Persistence.DataModels;
 
 namespace TimeCop.Web.Areas.Admin.Pages.Staffs;
 

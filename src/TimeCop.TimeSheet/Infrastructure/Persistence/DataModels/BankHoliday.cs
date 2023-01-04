@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TimeCop.TimeSheet.Data;
+namespace TimeCop.TimeSheet.Infrastructure.Persistence.DataModels;
 
 public class BankHoliday
 {

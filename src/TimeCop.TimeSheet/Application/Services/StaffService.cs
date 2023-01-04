@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TimeCop.TimeSheet.Data;
-using TimeCop.TimeSheet.Infrastructure;
+using TimeCop.TimeSheet.Infrastructure.Persistence;
+using TimeCop.TimeSheet.Infrastructure.Persistence.DataModels;
 
-namespace TimeCop.TimeSheet.Services;
+namespace TimeCop.TimeSheet.Application.Services;
 
 public class StaffService : IStaffService
 {
@@ -19,7 +19,7 @@ public class StaffService : IStaffService
 
     public IList<Staff> GetAll()
     {
-        return _db.Staffs.OrderByDescending(s=>s.IsActive).ToList();
+        return _db.Staffs.OrderByDescending(s => s.IsActive).ToList();
     }
 
     public Staff Get(int id)

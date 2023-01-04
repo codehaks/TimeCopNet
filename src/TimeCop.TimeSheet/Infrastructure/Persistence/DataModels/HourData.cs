@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TimeCop.TimeSheet.Data;
+namespace TimeCop.TimeSheet.Infrastructure.Persistence.DataModels;
 
 /*	[id] [int] IDENTITY(1,1) NOT NULL,
 	[staffname] [varchar](100) NOT NULL,

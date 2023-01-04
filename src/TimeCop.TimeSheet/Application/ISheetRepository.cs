@@ -1,7 +1,7 @@
 ﻿using NodaTime;
 using TimeCop.TimeSheet.Domain.Models;
 
-namespace TimeCop.TimeSheet.Infrastructure
+namespace TimeCop.TimeSheet.Application
 {
     public interface ISheetRepository
     {

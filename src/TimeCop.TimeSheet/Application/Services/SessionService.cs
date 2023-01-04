@@ -5,9 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TimeCop.TimeSheet.Domain.Models;
-using TimeCop.TimeSheet.Infrastructure;
 
-namespace TimeCop.TimeSheet.Services;
+namespace TimeCop.TimeSheet.Application.Services;
 
 public class HourInput
 {

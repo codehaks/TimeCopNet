@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using TimeCop.TimeSheet.Data;
+using TimeCop.TimeSheet.Infrastructure.Persistence.DataModels;
 
-namespace TimeCop.TimeSheet.Infrastructure;
+namespace TimeCop.TimeSheet.Infrastructure.Persistence;
 
 public class TimeSheetDbContext : DbContext
 {
@@ -16,7 +16,7 @@ public class TimeSheetDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
-        builder.Entity<BankHoliday>().Property(p=>p.Name).HasMaxLength(50).IsRequired();
+        builder.Entity<BankHoliday>().Property(p => p.Name).HasMaxLength(50).IsRequired();
         builder.Entity<BankHoliday>().Property(p => p.Date).IsRequired();
 
         base.OnModelCreating(builder);

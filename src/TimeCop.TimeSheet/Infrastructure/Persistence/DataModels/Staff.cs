@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace TimeCop.TimeSheet.Data;
+namespace TimeCop.TimeSheet.Infrastructure.Persistence.DataModels;
 
 public class Staff
 {
