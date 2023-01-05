@@ -1,7 +1,8 @@
-﻿namespace TimeCop.TimeSheet.Application
+﻿namespace TimeCop.TimeSheet.Application;
+
+
+public interface IUoW
 {
-    public interface IUoW
-    {
-        void CommitChanges();
-    }
+    ISessionRepository Sessions { get; init; }
+    void CommitChanges();
 }

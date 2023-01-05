@@ -12,12 +12,13 @@ namespace TimeCop.TimeSheet.Infrastructure;
 public class UoW : IUoW
 {
     private readonly TimeSheetDbContext _db;
-    private readonly ISessionRepository _sessionRepository;
+
+    public ISessionRepository Sessions { get; init; }
 
     public UoW(TimeSheetDbContext db)
     {
         _db = db;
-        _sessionRepository = new SessionRepository(db);
+        Sessions = new SessionRepository(db);
     }
 
     public void CommitChanges()

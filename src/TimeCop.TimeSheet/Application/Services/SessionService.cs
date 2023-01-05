@@ -17,24 +17,27 @@ public class HourInput
 
 public class SessionService : ISessionService
 {
-    private readonly ISessionRepository _sessionRepository;
+    private readonly IUoW _uoW;
 
-    public SessionService(ISessionRepository sessionRepository)
+    public SessionService(IUoW uoW)
     {
-        _sessionRepository = sessionRepository;
+        _uoW = uoW;
     }
 
     public void Create(HourInput input)
     {
-        var session = _sessionRepository.Get(input.StaffId);
+        var session = _uoW.Sessions.Get(input.StaffId);
 
         session.AddHour(input.Note);
-        _sessionRepository.Add(session);
+
+        _uoW.Sessions.Add(session);
+
+        _uoW.CommitChanges();
 
     }
 
     public Session Get(int staffId)
     {
-        return _sessionRepository.Get(staffId);
+        return _uoW.Sessions.Get(staffId);
     }
 }
